@@ -1,0 +1,43 @@
+/* ── Dynamic / format strings (keys differ from display values) ── */
+
+/* History toolbar */
+"scroll_count_singular" = "%d scroll";
+"scroll_count_plural"   = "%d scrolls";
+"delete_count"          = "Delete %d";
+
+/* History cell */
+"photos_count"          = "%d photos";
+
+/* Ban sheet */
+"ban_count"             = "Ban (%d)";
+
+/* Banned photos view */
+"banned_count_singular" = "%d banned photo";
+"banned_count_plural"   = "%d banned photos";
+"unban_count"           = "Unban (%d)";
+"unban_all_confirm"     = "Unban all %d photos?";
+
+/* Crop adjust badges */
+"top_crop_pct"          = "Top %d%%";
+"bottom_crop_pct"       = "Bottom %d%%";
+
+/* Location picker */
+"location_photo_singular" = "%d photo";
+"location_photo_plural"   = "%d photos";
+
+/* ── ViewModel messages ── */
+"photos"                = "photos";
+"photo_subject_fmt"     = "%@ photos";   /* e.g. "food photos" */
+"timeframe_custom"      = "the selected date range";
+
+"vm_empty_library"          = "Your library appears to be empty. Add some photos and try again.";
+"vm_no_subject_library"     = "No %@ found in your library. Try a different category.";
+"vm_no_subject_timeframe"   = "No %1$@ found in %2$@. Try a different category or wider time frame.";
+"vm_insufficient"           = "Only %1$d %2$@ found in %3$@ — need %4$d to build a scroll. Try a wider time frame or lower the photo count in Settings.";
+
+"vm_es_empty_library"       = "Your library appears to be empty.\nAdd some photos and try again.";
+"vm_es_no_subject_library"  = "No %@ photos found in your library.\nTry a different category.";
+"vm_es_all_custom"          = "No photos in your custom date range.\nAdjust the dates in Settings.";
+"vm_es_no_subject_custom"   = "No %@ photos in your custom date range.\nAdjust the dates or category in Settings.";
+"vm_es_all_timeframe"       = "No photos in \"%@\".\nTry a wider time frame or different category.";
+"vm_es_no_subject_timeframe"= "No %1$@ photos in \"%2$@\".\nTry a wider time frame or different category.";

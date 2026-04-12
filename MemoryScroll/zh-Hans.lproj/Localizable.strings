@@ -1,0 +1,148 @@
+/* ── Navigation ── */
+"Memory Scroll"                     = "记忆画卷";
+"Random photo strip generator"      = "随机长图生成器";
+"Create"                            = "创建";
+"History"                           = "历史";
+"Banned"                            = "已屏蔽";
+"Settings"                          = "设置";
+"Preview"                           = "预览";
+"Actions"                           = "操作";
+
+/* ── Common actions ── */
+"Done"                              = "完成";
+"Cancel"                            = "取消";
+"Select"                            = "选择";
+"Clear All"                         = "全部清除";
+"Clear"                             = "清除";
+"Reset"                             = "重置";
+"Reset All"                         = "全部重置";
+"Delete"                            = "删除";
+"Share"                             = "分享";
+"Save"                              = "保存";
+"Crop"                              = "裁剪";
+"Load More"                         = "加载更多";
+"OK"                                = "好的";
+"From"                              = "开始";
+"To"                                = "结束";
+
+/* ── Create tab ── */
+"Generate a Scroll"                 = "生成滚动条";
+"Tap the button below to pick random\nphotos from your library." = "点击下方按钮，从相册随机选取照片。";
+"Requesting access…"                = "正在请求权限…";
+"Building your scroll…"             = "正在生成滚动条…";
+
+/* ── Empty states ── */
+"No Photos Found"                   = "未找到照片";
+"Access Denied"                     = "访问被拒绝";
+"Grant photo library access in\nSettings → Privacy → Photos." = "请前往\n设置 → 隐私 → 照片\n授予相册访问权限。";
+"Something Went Wrong"              = "出了点问题";
+"No Scrolls Yet"                    = "暂无记录";
+"Generated scrolls will appear here." = "生成的滚动条将显示在这里。";
+"No Banned Photos"                  = "没有已屏蔽的照片";
+"Photos you ban from the strip will appear here." = "您屏蔽的照片将显示在这里。";
+"No photos in current scroll"       = "当前滚动条中没有照片";
+"Item no longer available"          = "该项目已不可用";
+"No Location Data"                  = "无位置数据";
+"None of your photos have GPS data." = "您的照片中没有 GPS 数据。";
+
+/* ── Alerts ── */
+"Not Enough Photos"                 = "照片数量不足";
+"Category"                          = "分类";
+"Time Frame"                        = "时间范围";
+
+/* ── Settings ── */
+"Scroll Length"                     = "滚动条长度";
+"Photos per scroll"                 = "每条照片数";
+"Choose between 5 and 10 photos per generated scroll." = "每次生成 5 到 10 张照片。";
+"Even Time Distribution"            = "均匀时间分布";
+"Photos are spread evenly across the selected window, with random fill for sparse periods. Takes effect on next generate." = "照片将均匀分布在所选时间段内，稀疏时段随机补充，下次生成时生效。";
+"Photos are picked randomly from the selected window with no time constraints." = "照片从所选时间段内随机选取，无时间限制。";
+"Scroll Direction"                  = "滚动方向";
+"Vertical creates a tall strip you scroll up/down. Horizontal creates a wide strip you scroll left/right." = "竖向创建上下滚动的长条，横向创建左右滚动的宽条。";
+"Overlays"                          = "叠加信息";
+"Show Date"                         = "显示日期";
+"Show Location"                     = "显示位置";
+"Date is stamped bottom-left; location (city, country) bottom-right. Photos without GPS data will not show a location." = "日期显示在左下角，位置（城市、国家）显示在右下角。无 GPS 数据的照片不显示位置。";
+"Date Format"                       = "日期格式";
+"Date Size"                         = "日期大小";
+
+/* ── Photo categories ── */
+"All"                               = "全部";
+"People"                            = "人物";
+"Scenery"                           = "风景";
+"Food"                              = "美食";
+"Architecture"                      = "建筑";
+"Animals"                           = "动物";
+
+/* ── Time frames ── */
+"Last Week"                         = "最近一周";
+"Last Month"                        = "最近一个月";
+"Last Year"                         = "最近一年";
+"Last 5 Years"                      = "最近五年";
+"All Time"                          = "全部时间";
+"Custom"                            = "自定义";
+
+/* ── Scroll orientation ── */
+"Vertical"                          = "竖向";
+"Horizontal"                        = "横向";
+
+/* ── Date size ── */
+"Small"                             = "小";
+"Medium"                            = "中";
+"Large"                             = "大";
+"Extra Large"                       = "特大";
+
+/* ── Category picker ── */
+"Photo Category"                    = "照片分类";
+"Photos will be filtered by category before being spread evenly across your time frame." = "照片将按分类筛选后，均匀分布在所选时间段内。";
+
+/* ── Ban sheet ── */
+"Ban Photos"                        = "屏蔽照片";
+"Select photos to exclude from all future scrolls." = "选择要从未来所有滚动条中排除的照片。";
+"Ban"                               = "屏蔽";
+"ban_count"                         = "屏蔽（%d）";
+
+/* ── Banned photos view ── */
+"Banned Photos"                     = "已屏蔽的照片";
+"Unban All"                         = "全部解除屏蔽";
+"Unban"                             = "解除屏蔽";
+"unban_count"                       = "解除屏蔽（%d）";
+"banned_count_singular"             = "%d 张已屏蔽照片";
+"banned_count_plural"               = "%d 张已屏蔽照片";
+"unban_all_confirm"                 = "解除屏蔽全部 %d 张照片？";
+
+/* ── History ── */
+"scroll_count_singular"             = "%d 条";
+"scroll_count_plural"               = "%d 条";
+"delete_count"                      = "删除 %d";
+"photos_count"                      = "%d 张照片";
+
+/* ── Crop adjust ── */
+"Adjust Crops"                      = "调整裁剪";
+"top_crop_pct"                      = "顶部 %d%%";
+"bottom_crop_pct"                   = "底部 %d%%";
+
+/* ── Location picker ── */
+"Filter by Location"                = "按位置筛选";
+"Any Location"                      = "任意位置";
+"Scanning locations…"               = "正在扫描位置…";
+"Search locations"                  = "搜索位置";
+"location_photo_singular"           = "%d 张";
+"location_photo_plural"             = "%d 张";
+
+/* ── ViewModel messages ── */
+"photos"                            = "照片";
+"photo_subject_fmt"                 = "%@照片";
+"timeframe_custom"                  = "所选时间范围";
+
+"vm_empty_library"                  = "您的相册为空，请添加照片后重试。";
+"vm_no_subject_library"             = "相册中未找到%@，请尝试其他分类。";
+"vm_no_subject_timeframe"           = "在%2$@中未找到%1$@，请尝试其他分类或更宽的时间范围。";
+"vm_insufficient"                   = "在%3$@中仅找到%1$d张%2$@，需要%4$d张才能生成滚动条，请尝试更宽的时间范围或在设置中减少照片数量。";
+
+"vm_es_empty_library"               = "您的相册为空。\n请添加照片后重试。";
+"vm_es_no_subject_library"          = "相册中未找到%@照片。\n请尝试其他分类。";
+"vm_es_all_custom"                  = "在您设定的时间范围内未找到照片。\n请在设置中调整日期。";
+"vm_es_no_subject_custom"           = "在您设定的时间范围内未找到%@照片。\n请在设置中调整日期或分类。";
+"vm_es_all_timeframe"               = "在「%@」中未找到照片。\n请尝试更宽的时间范围。";
+"vm_es_no_subject_timeframe"        = "在「%2$@」中未找到%1$@照片。\n请尝试更宽的时间范围或不同分类。";
