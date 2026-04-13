@@ -54,6 +54,7 @@
 "Scroll Length"                     = "长图长度";
 "Photos per scroll"                 = "每条照片数";
 "Choose between 5 and 10 photos per generated scroll." = "每次生成 5 到 10 张照片。";
+"Landscape Photos Only"             = "仅横向照片";
 "Even Time Distribution"            = "均匀时间分布";
 "Photos are spread evenly across the selected window, with random fill for sparse periods. Takes effect on next generate." = "照片将均匀分布在所选时间段内，稀疏时段随机补充，下次生成时生效。";
 "Photos are picked randomly from the selected window with no time constraints." = "照片从所选时间段内随机选取，无时间限制。";

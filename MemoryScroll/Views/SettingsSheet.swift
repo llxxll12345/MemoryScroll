@@ -71,6 +71,12 @@ struct SettingsSheet: View {
                     Divider()
                         .padding(.vertical, 4)
 
+                    Toggle(isOn: $vm.excludePortrait) {
+                        Label("Landscape Photos Only", systemImage: "rectangle.landscape")
+                    }
+                    .tint(.cyan)
+                    .onChange(of: vm.excludePortrait) { _ in }   // takes effect on next generate
+
                     Toggle(isOn: $vm.evenDistribution) {
                         Label("Even Time Distribution", systemImage: "chart.bar.xaxis")
                     }
@@ -83,32 +89,6 @@ struct SettingsSheet: View {
                     } else {
                         Text("Photos are picked randomly from the selected window with no time constraints.")
                     }
-                }
-
-                // ── Scroll Orientation ──
-                Section {
-                    ForEach(ScrollOrientation.allCases) { option in
-                        Button {
-                            vm.orientation = option
-                            vm.recomposite()
-                        } label: {
-                            HStack {
-                                Label(LocalizedStringKey(option.rawValue), systemImage: option.iconName)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                if vm.orientation == option {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundStyle(.cyan)
-                                }
-                            }
-                            .contentShape(Rectangle())
-                        }
-                        .buttonStyle(.plain)
-                    }
-                } header: {
-                    Text("Scroll Direction")
-                } footer: {
-                    Text("Vertical creates a tall strip you scroll up/down. Horizontal creates a wide strip you scroll left/right.")
                 }
 
                 // ── Date & Location Overlays ──

@@ -176,19 +176,15 @@ struct ContentView: View {
         case .loaded:
             if let image = vm.compositeImage {
                 VStack(spacing: 12) {
-                    ScrollStripView(image: image, orientation: vm.orientation)
-                        .frame(maxHeight: vm.orientation == .vertical ? 420 : 280)
+                    ScrollStripView(image: image, orientation: .vertical)
+                        .frame(maxHeight: 420)
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .padding(.horizontal, 16)
                         .shadow(color: .white.opacity(0.04), radius: 20)
 
-                    HStack(spacing: 8) {
-                        Image(systemName: vm.orientation.iconName)
-                            .font(.system(size: 11))
-                        Text("\(vm.photos.count) photos  ·  \(Int(image.size.width))×\(Int(image.size.height)) px")
-                            .font(.system(size: 12, design: .monospaced))
-                    }
-                    .foregroundStyle(.white.opacity(0.35))
+                    Text("\(vm.photos.count) photos  ·  \(Int(image.size.width))×\(Int(image.size.height)) px")
+                        .font(.system(size: 12, design: .monospaced))
+                        .foregroundStyle(.white.opacity(0.35))
                 }
             }
 

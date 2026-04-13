@@ -85,7 +85,8 @@ class PhotoLibraryService {
         category: PhotoCategory = .all,
         bannedIDs: Set<String> = [],
         evenDistribution: Bool = false,
-        allowedIDs: Set<String>? = nil   // nil = no location filter; non-nil = only these assets
+        allowedIDs: Set<String>? = nil,   // nil = no location filter; non-nil = only these assets
+        excludePortrait: Bool = true       // when true, photos taller than wide are skipped
     ) async -> (photos: [ScrollPhoto], totalAvailable: Int) {
         // Merge app-album IDs and user-banned IDs into one exclusion set.
         let excludedIDs = fetchAppAlbumAssetIDs().union(bannedIDs)
@@ -141,6 +142,7 @@ class PhotoLibraryService {
                     let asset = assets.object(at: j)
                     guard !excludedIDs.contains(asset.localIdentifier) else { continue }
                     if let allowed = allowedIDs, !allowed.contains(asset.localIdentifier) { continue }
+                    if excludePortrait && asset.pixelHeight > asset.pixelWidth { continue }
                     eligible.append(asset)
                 }
 
@@ -194,6 +196,7 @@ class PhotoLibraryService {
                 let asset = allAssets.object(at: i)
                 guard !excludedIDs.contains(asset.localIdentifier) else { continue }
                 if let allowed = allowedIDs, !allowed.contains(asset.localIdentifier) { continue }
+                if excludePortrait && asset.pixelHeight > asset.pixelWidth { continue }
                 if !evenDistribution { totalAvailable += 1 }
                 if !usedAssetIDs.contains(asset.localIdentifier) {
                     pool.append(asset)

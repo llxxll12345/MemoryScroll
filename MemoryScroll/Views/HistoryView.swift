@@ -154,12 +154,10 @@ struct HistoryCell: View {
                         .frame(width: geo.size.width, height: geo.size.height)
                         .background(Color.white.opacity(0.04))
                 }
-                .frame(height: item.orientation == .vertical ? 220 : 120)
+                .frame(height: 220)
                 .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
 
                 HStack(spacing: 4) {
-                    Image(systemName: item.orientation.iconName)
-                        .font(.system(size: 10))
                     Text(String(format: NSLocalizedString("photos_count", comment: ""), item.photoCount))
                         .font(.system(size: 11, design: .monospaced))
                     Spacer()

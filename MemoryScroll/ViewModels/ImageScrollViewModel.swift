@@ -20,7 +20,7 @@ class ImageScrollViewModel: ObservableObject {
     @Published var cameraDateStyle: Bool = false
     @Published var selectedFormat: DateFormatOption = .yyyymmdd
     @Published var dateSize: DateSizeOption = .medium
-    @Published var orientation: ScrollOrientation = .vertical   // default vertical
+    @Published var excludePortrait: Bool = true
     @Published var photoCount: Int = 7                          // 5–10
     @Published var selectedTimeFrame: TimeFrameOption = .allTime
     @Published var selectedCategory: PhotoCategory = .all
@@ -176,7 +176,8 @@ class ImageScrollViewModel: ObservableObject {
             category: selectedCategory,
             bannedIDs: bannedStore.bannedIDs,
             evenDistribution: evenDistribution,
-            allowedIDs: locationAllowedIDs
+            allowedIDs: locationAllowedIDs,
+            excludePortrait: excludePortrait
         )
 
         // No photos at all in this time range.
@@ -215,7 +216,7 @@ class ImageScrollViewModel: ObservableObject {
         config.showLocation = showLocation
         config.dateFormat = selectedFormat.rawValue
         config.cameraDateStyle = cameraDateStyle
-        config.orientation = orientation
+        config.orientation = .vertical
         config.dateFont = .monospacedSystemFont(ofSize: dateSize.fontSize, weight: .semibold)
         config.datePillInset = dateSize.pillInset
         config.cropBounds = cropBounds
@@ -282,7 +283,7 @@ class ImageScrollViewModel: ObservableObject {
         let item = HistoryItem(
             image: image,
             photoCount: photos.count,
-            orientation: orientation,
+            orientation: .vertical,
             createdAt: Date()
         )
         currentHistoryID = item.id
