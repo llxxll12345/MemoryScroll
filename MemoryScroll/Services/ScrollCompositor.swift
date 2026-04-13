@@ -237,8 +237,8 @@ struct ScrollCompositor {
         let bgColor: UIColor
         let cornerRadius: CGFloat
         if config.cameraDateStyle {
-            textColor    = UIColor(red: 1.0, green: 0.55, blue: 0.05, alpha: 1.0)
-            bgColor      = UIColor.black.withAlphaComponent(0.18)
+            textColor    = UIColor.orange
+            bgColor      = UIColor.black.withAlphaComponent(0.0)
             cornerRadius = 2
         } else {
             textColor    = config.dateColor

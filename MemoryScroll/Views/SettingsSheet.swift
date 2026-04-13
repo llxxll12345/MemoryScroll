@@ -72,7 +72,7 @@ struct SettingsSheet: View {
                         .padding(.vertical, 4)
 
                     Toggle(isOn: $vm.excludePortrait) {
-                        Label("Landscape Photos Only", systemImage: "rectangle.landscape")
+                        Label("Landscape Photos Only", systemImage: "arrow.left.and.right")
                     }
                     .tint(.cyan)
                     .onChange(of: vm.excludePortrait) { _ in }   // takes effect on next generate
