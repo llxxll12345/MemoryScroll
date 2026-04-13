@@ -66,7 +66,7 @@ private struct CategoryCard: View {
                     .foregroundStyle(isSelected ? .black : .white.opacity(0.75))
                     .frame(height: 32)
 
-                Text(category.rawValue)
+                Text(LocalizedStringKey(category.rawValue))
                     .font(.system(size: 12, weight: .semibold, design: .rounded))
                     .foregroundStyle(isSelected ? .black : .white.opacity(0.65))
                     .lineLimit(1)

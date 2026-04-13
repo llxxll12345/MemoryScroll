@@ -2,22 +2,19 @@
 //  DateFormatOption.swift
 //  MemoryScroll
 //
-//  Created by Lixing Liu on 4/8/26.
-//
 
 import Foundation
 
-/// Supported date formats the user can pick from.
+/// The three date formats available for the overlay stamp.
+/// Raw value doubles as the DateFormatter format string.
 enum DateFormatOption: String, CaseIterable, Identifiable {
-    case short      = "MM/dd/yyyy"
-    case medium     = "MMM d, yyyy"
-    case long       = "MMMM d, yyyy"
-    case european   = "dd.MM.yyyy"
-    case iso        = "yyyy-MM-dd"
-    case monthYear  = "MMMM yyyy"
+    case mmddyyyy = "MM/dd/yyyy"   // US
+    case ddmmyyyy = "dd/MM/yyyy"   // European
+    case yyyymmdd = "yyyy/MM/dd"   // ISO / East-Asian
 
     var id: String { rawValue }
 
+    /// Example date rendered with this format (shown in settings).
     var label: String {
         let formatter = DateFormatter()
         formatter.dateFormat = rawValue

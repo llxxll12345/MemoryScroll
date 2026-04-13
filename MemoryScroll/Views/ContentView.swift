@@ -284,7 +284,7 @@ struct ContentView: View {
                 Menu {
                     Button { vm.showCropAdjust = true } label: {
                         Label(
-                            vm.cropBounds.isEmpty ? "Adjust Crops" : "Adjust Crops (active)",
+                            LocalizedStringKey(vm.cropBounds.isEmpty ? "Adjust Crops" : "Adjust Crops (active)"),
                             systemImage: "crop"
                         )
                     }

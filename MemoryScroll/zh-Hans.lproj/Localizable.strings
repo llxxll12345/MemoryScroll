@@ -26,10 +26,10 @@
 "To"                                = "结束";
 
 /* ── Create tab ── */
-"Generate a Scroll"                 = "生成滚动条";
+"Generate a Scroll"                 = "生成长图";
 "Tap the button below to pick random\nphotos from your library." = "点击下方按钮，从相册随机选取照片。";
 "Requesting access…"                = "正在请求权限…";
-"Building your scroll…"             = "正在生成滚动条…";
+"Building your scroll…"             = "正在生成长图…";
 
 /* ── Empty states ── */
 "No Photos Found"                   = "未找到照片";
@@ -37,10 +37,10 @@
 "Grant photo library access in\nSettings → Privacy → Photos." = "请前往\n设置 → 隐私 → 照片\n授予相册访问权限。";
 "Something Went Wrong"              = "出了点问题";
 "No Scrolls Yet"                    = "暂无记录";
-"Generated scrolls will appear here." = "生成的滚动条将显示在这里。";
+"Generated scrolls will appear here." = "生成的长图将显示在这里。";
 "No Banned Photos"                  = "没有已屏蔽的照片";
 "Photos you ban from the strip will appear here." = "您屏蔽的照片将显示在这里。";
-"No photos in current scroll"       = "当前滚动条中没有照片";
+"No photos in current scroll"       = "当前长图中没有照片";
 "Item no longer available"          = "该项目已不可用";
 "No Location Data"                  = "无位置数据";
 "None of your photos have GPS data." = "您的照片中没有 GPS 数据。";
@@ -51,7 +51,7 @@
 "Time Frame"                        = "时间范围";
 
 /* ── Settings ── */
-"Scroll Length"                     = "滚动条长度";
+"Scroll Length"                     = "长图长度";
 "Photos per scroll"                 = "每条照片数";
 "Choose between 5 and 10 photos per generated scroll." = "每次生成 5 到 10 张照片。";
 "Even Time Distribution"            = "均匀时间分布";
@@ -64,6 +64,8 @@
 "Show Location"                     = "显示位置";
 "Date is stamped bottom-left; location (city, country) bottom-right. Photos without GPS data will not show a location." = "日期显示在左下角，位置（城市、国家）显示在右下角。无 GPS 数据的照片不显示位置。";
 "Date Format"                       = "日期格式";
+"Camera Date Style"                 = "相机日期风格";
+"Amber digits on a near-transparent background, like a film camera date stamp." = "琥珀色数字搭配近透明背景，模拟胶片相机日期戳效果。";
 "Date Size"                         = "日期大小";
 
 /* ── Photo categories ── */
@@ -98,7 +100,7 @@
 
 /* ── Ban sheet ── */
 "Ban Photos"                        = "屏蔽照片";
-"Select photos to exclude from all future scrolls." = "选择要从未来所有滚动条中排除的照片。";
+"Select photos to exclude from all future scrolls." = "选择要从未来所有长图中排除的照片。";
 "Ban"                               = "屏蔽";
 "ban_count"                         = "屏蔽（%d）";
 
@@ -119,6 +121,7 @@
 
 /* ── Crop adjust ── */
 "Adjust Crops"                      = "调整裁剪";
+"Adjust Crops (active)"             = "调整裁剪（已调整）";
 "top_crop_pct"                      = "顶部 %d%%";
 "bottom_crop_pct"                   = "底部 %d%%";
 
@@ -138,7 +141,7 @@
 "vm_empty_library"                  = "您的相册为空，请添加照片后重试。";
 "vm_no_subject_library"             = "相册中未找到%@，请尝试其他分类。";
 "vm_no_subject_timeframe"           = "在%2$@中未找到%1$@，请尝试其他分类或更宽的时间范围。";
-"vm_insufficient"                   = "在%3$@中仅找到%1$d张%2$@，需要%4$d张才能生成滚动条，请尝试更宽的时间范围或在设置中减少照片数量。";
+"vm_insufficient"                   = "在%3$@中仅找到%1$d张%2$@，需要%4$d张才能生成长图，请尝试更宽的时间范围或在设置中减少照片数量。";
 
 "vm_es_empty_library"               = "您的相册为空。\n请添加照片后重试。";
 "vm_es_no_subject_library"          = "相册中未找到%@照片。\n请尝试其他分类。";

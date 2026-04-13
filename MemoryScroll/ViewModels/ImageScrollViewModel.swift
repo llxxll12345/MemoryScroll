@@ -17,7 +17,8 @@ class ImageScrollViewModel: ObservableObject {
     // User preferences
     @Published var showDate: Bool = true
     @Published var showLocation: Bool = false
-    @Published var selectedFormat: DateFormatOption = .medium
+    @Published var cameraDateStyle: Bool = false
+    @Published var selectedFormat: DateFormatOption = .yyyymmdd
     @Published var dateSize: DateSizeOption = .medium
     @Published var orientation: ScrollOrientation = .vertical   // default vertical
     @Published var photoCount: Int = 7                          // 5–10
@@ -213,6 +214,7 @@ class ImageScrollViewModel: ObservableObject {
         config.showDate = showDate
         config.showLocation = showLocation
         config.dateFormat = selectedFormat.rawValue
+        config.cameraDateStyle = cameraDateStyle
         config.orientation = orientation
         config.dateFont = .monospacedSystemFont(ofSize: dateSize.fontSize, weight: .semibold)
         config.datePillInset = dateSize.pillInset

@@ -156,8 +156,19 @@ struct SettingsSheet: View {
                         }
                         .buttonStyle(.plain)
                     }
+
+                    // Camera-style date toggle
+                    Toggle(isOn: $vm.cameraDateStyle) {
+                        Label("Camera Date Style", systemImage: "camera.fill")
+                    }
+                    .tint(.orange)
+                    .onChange(of: vm.cameraDateStyle) { _ in vm.recomposite() }
                 } header: {
                     Text("Date Format")
+                } footer: {
+                    if vm.cameraDateStyle {
+                        Text("Amber digits on a near-transparent background, like a film camera date stamp.")
+                    }
                 }
                 .disabled(!vm.showDate)
                 .opacity(vm.showDate ? 1 : 0.4)
@@ -173,7 +184,7 @@ struct SettingsSheet: View {
                                 Image(systemName: option.iconName)
                                     .font(.system(size: 14))
                                     .frame(width: 24)
-                                Text(option.rawValue)
+                                Text(LocalizedStringKey(option.rawValue))
                                     .font(.system(.subheadline))
                                     .foregroundStyle(.primary)
                                 Spacer()

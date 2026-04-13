@@ -30,6 +30,10 @@ struct ScrollCompositor {
         // Location overlay — shares font/color/pill style with the date stamp
         var showLocation: Bool = false
 
+        /// When true, the date stamp mimics a classic film-camera overlay:
+        /// amber/orange digits, minimal background, tight square corners.
+        var cameraDateStyle: Bool = false
+
         // Per-photo crop bounds keyed by ScrollPhoto.id
         var cropBounds: [String: CropBounds] = [:]
     }
@@ -158,50 +162,43 @@ struct ScrollCompositor {
         return f
     }
 
-    /// Draws `image` scaled to fill `imageRect`, clipped to `clipRect`.
-    /// The caller positions imageRect so the desired photo region aligns with clipRect.
+    /// Draws `image` scaled to aspect-fill `imageRect`, clipped to `clipRect`.
+    ///
+    /// Uses `UIImage.draw(in:)` rather than `CGContext.draw(_:in:)` so that:
+    /// - The UIGraphicsImageRenderer coordinate system is respected without manual flipping.
+    /// - Images backed by a CIImage (no cgImage) draw correctly.
+    /// - Memory-pressure evictions of cgImage data are handled transparently.
     private static func drawImageInRect(
         _ image: UIImage,
         imageRect: CGRect,
         clipRect: CGRect,
         context: CGContext
     ) {
-        guard let cgImage = image.cgImage else { return }
-
-        // Scale imageRect to aspect-fill clipRect while preserving the caller's
-        // positioning intent (top/bottom crop offset is already baked into imageRect.origin).
+        // Expand imageRect to aspect-fill the slot while preserving the caller's
+        // crop-offset positioning (the offset is already baked into imageRect.origin).
         let imageAspect = image.size.width / image.size.height
-        let slotAspect  = imageRect.width / imageRect.height
+        let slotAspect  = imageRect.width  / imageRect.height
 
         var drawRect = imageRect
         if imageAspect > slotAspect {
-            // Image wider than slot: expand width to fill, keep height
+            // Image wider than slot → expand width, keep height
             let scaledWidth = imageRect.height * imageAspect
-            drawRect = CGRect(
-                x: imageRect.midX - scaledWidth / 2,
-                y: imageRect.minY,
-                width: scaledWidth,
-                height: imageRect.height
-            )
+            drawRect = CGRect(x: imageRect.midX - scaledWidth / 2,
+                              y: imageRect.minY,
+                              width: scaledWidth, height: imageRect.height)
         } else if imageAspect < slotAspect {
-            // Image taller than slot: expand height to fill, keep width
+            // Image taller than slot → expand height, keep width
             let scaledHeight = imageRect.width / imageAspect
-            drawRect = CGRect(
-                x: imageRect.minX,
-                y: imageRect.midY - scaledHeight / 2,
-                width: imageRect.width,
-                height: scaledHeight
-            )
+            drawRect = CGRect(x: imageRect.minX,
+                              y: imageRect.midY - scaledHeight / 2,
+                              width: imageRect.width, height: scaledHeight)
         }
 
         context.saveGState()
-        context.clip(to: [clipRect])
-        // CGContext has a flipped coordinate system; compensate with a vertical flip.
-        let flipY = drawRect.minY + drawRect.height
-        context.translateBy(x: 0, y: flipY)
-        context.scaleBy(x: 1, y: -1)
-        context.draw(cgImage, in: CGRect(x: drawRect.minX, y: 0,
-                                         width: drawRect.width, height: drawRect.height))
+        context.clip(to: clipRect)
+        // UIImage.draw(in:) honours the renderer's UIKit coordinate system directly,
+        // avoiding the manual translate/scale/flip that caused black slots.
+        image.draw(in: drawRect)
         context.restoreGState()
     }
 
@@ -235,9 +232,23 @@ struct ScrollCompositor {
         in rect: CGRect,
         config: Config
     ) {
+        // Camera style: amber digits, barely-there background, square corners.
+        let textColor: UIColor
+        let bgColor: UIColor
+        let cornerRadius: CGFloat
+        if config.cameraDateStyle {
+            textColor    = UIColor(red: 1.0, green: 0.55, blue: 0.05, alpha: 1.0)
+            bgColor      = UIColor.black.withAlphaComponent(0.18)
+            cornerRadius = 2
+        } else {
+            textColor    = config.dateColor
+            bgColor      = config.dateBackgroundColor
+            cornerRadius = config.dateCornerRadius
+        }
+
         let attributes: [NSAttributedString.Key: Any] = [
             .font: config.dateFont,
-            .foregroundColor: config.dateColor
+            .foregroundColor: textColor
         ]
         let textSize = (text as NSString).size(withAttributes: attributes)
         let padding  = config.datePadding
@@ -256,8 +267,8 @@ struct ScrollCompositor {
             height: textSize.height + inset * 2
         )
 
-        let pillPath = UIBezierPath(roundedRect: pillRect, cornerRadius: config.dateCornerRadius)
-        config.dateBackgroundColor.setFill()
+        let pillPath = UIBezierPath(roundedRect: pillRect, cornerRadius: cornerRadius)
+        bgColor.setFill()
         pillPath.fill()
 
         (text as NSString).draw(

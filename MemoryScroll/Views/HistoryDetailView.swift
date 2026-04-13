@@ -39,7 +39,7 @@ struct HistoryDetailView: View {
                     // Info row
                     HStack(spacing: 16) {
                         Label("\(item.photoCount)", systemImage: "photo.stack")
-                        Label(item.orientation.rawValue, systemImage: item.orientation.iconName)
+                        Label(LocalizedStringKey(item.orientation.rawValue), systemImage: item.orientation.iconName)
                         Spacer()
                         Text("\(Int(item.image.size.width))×\(Int(item.image.size.height))")
                     }

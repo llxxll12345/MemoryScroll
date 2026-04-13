@@ -68,12 +68,22 @@ class HistoryStore {
     // MARK: - Save
 
     /// Persists a new item. The image is written to disk; metadata is appended to UserDefaults.
+    /// Metadata is only written if the image file write succeeds, preventing phantom records
+    /// that point to non-existent files and silently disappear on the next load.
     func save(_ item: HistoryItem) {
         let fileName = "\(item.id.uuidString).jpg"
         let url = imagesDir.appendingPathComponent(fileName)
 
-        guard let data = item.image.jpegData(compressionQuality: 0.85) else { return }
-        try? data.write(to: url, options: .atomic)
+        guard let data = item.image.jpegData(compressionQuality: 0.85) else {
+            print("HistoryStore: jpegData encoding failed for \(item.id)")
+            return
+        }
+        do {
+            try data.write(to: url, options: .atomic)
+        } catch {
+            print("HistoryStore: image write failed for \(item.id): \(error)")
+            return
+        }
 
         var records = loadRecords()
         records.insert(Record(
@@ -132,6 +142,8 @@ class HistoryStore {
     private func saveRecords(_ records: [Record]) {
         guard let data = try? JSONEncoder().encode(records) else { return }
         UserDefaults.standard.set(data, forKey: metadataKey)
+        // Force an immediate flush so a sudden termination doesn't lose the record.
+        UserDefaults.standard.synchronize()
     }
 
     private func removeImageFile(id: UUID) {
